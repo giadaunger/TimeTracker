@@ -1,0 +1,19 @@
+.nav-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+}
+
+.nav-link, .nav-li {
+    display: inline;
+    color: white;
+    text-align: center;
+    padding: 10px 8px;
+    text-decoration: none;
+}

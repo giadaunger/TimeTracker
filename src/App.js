@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import './App.css';
+
+import Calender from './frontend/Calender';
+import Task from './frontend/Task';
+import Timer from './frontend/Timer';
+import Dashboard from './frontend/Dashboard';
+import Nav from './frontend/Nav';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      
+      <div className="App">
+        <Nav />
+      </div>
+
+      <Routes>
+        <Route path="/calender" element={< Calender />} />
+        <Route path="/task" element={< Task />} />
+        <Route path="/timeTracker" element={< Timer />} />
+        <Route path="/" element={< Dashboard />}/>
+      </Routes>
+
+    </Router>
   );
 }
 
