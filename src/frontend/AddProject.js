@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './css/taskAndProject.css';
 
 function AddProject() {
 
   const unique_id = uuid();
+  const navigate = useNavigate();
 
   const [projectName, setProjectName] = useState('');
   const handleChange = e => {
@@ -13,14 +15,18 @@ function AddProject() {
     console.log('value is:', e.target.value);
   }
 
+  function BackToDashboard() {
+    navigate("/")
+  }
+
   function submitProject() {
     const project = {
       id : unique_id,
       name: projectName,
-    }
+  }
 
     setProjectName('');
-
+  
   const headers = {"Content-Type" : "application/json"}
   axios.post("http://localhost:3001/projects", project, {
     headers: {
@@ -44,7 +50,11 @@ function AddProject() {
               value={projectName}
               />
 
-            <button onClick={submitProject}>Save</button>
+            <button onClick={() => {
+              submitProject();
+              BackToDashboard();
+            }
+            }>Save</button>
         </div>
     </div>
   );

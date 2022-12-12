@@ -38,7 +38,7 @@ function Dashboard(project) {
   <div className="map-tasks" key={task.id}>
     <div className="task-obj">
       <h2>{task.name}</h2>
-      <p>Projekt: {task.projectId}</p>
+      <p>Projekt: {task.projectName}</p>
       <p>Time: {task.timer}</p>
     </div>
 

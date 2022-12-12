@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { v4 as uuid } from 'uuid';
 import "./css/taskAndProject.css"
@@ -7,8 +8,24 @@ function AddTask() {
 
   const unique_id = uuid();
   const [taskName, setTaskName] = useState('');
-  const [projectId, setProjectId] = useState('');
+  const [projectName, setProjectName] = useState('');
   const [date, setDate] = useState('');
+  const [projects, setProjects] = useState([]);
+  const navigate = useNavigate();
+  
+  const mapProjects = projects.map((project) => 
+    <option key={project.id}>{project.name}</option>
+  )
+
+  useEffect(() => {  getProjects() }, []);
+
+  function getProjects () {
+    axios.get("http://localhost:3001/projects").then(res => setProjects(res.data)).catch(error => console.warn(error));
+  }
+
+  function BackToDashboard() {
+    navigate("/")
+  }
 
   const handleTaskName = e => {
     setTaskName(e.target.value);
@@ -20,8 +37,8 @@ function AddTask() {
     console.log('value is:', e.target.value);
   }
 
-  const handleProjectId = e => {
-    setDate(e.target.value);
+  const handleProjectName = e => {
+    setProjectName(e.target.value);
     console.log('value is:', e.target.value);
   }
 
@@ -29,7 +46,7 @@ function AddTask() {
     const task = {
       id : unique_id,
       name: taskName,
-      projectId : projectId,
+      projectName : projectName,
       timer : null,
       date : date
     }
@@ -63,9 +80,12 @@ function AddTask() {
             <label className="project-label">Project:</label><br />
             <select 
               form="select"
-              name="projectId"
-              onChange={handleProjectId}
-              value={projectId}>
+              name="projectName"
+              onChange={handleProjectName}
+              value={projectName}
+              >
+                <option>--</option>
+                {mapProjects}
               </select><br />
 
             <label className="project-label">Date:</label><br />
@@ -77,7 +97,10 @@ function AddTask() {
               value={date}
             /><br />
 
-            <button onClick={submitTask}>Save</button>
+            <button onClick={() => {
+              submitTask();
+              BackToDashboard();
+            }}>Save</button>
         </div>
     </div>
   );

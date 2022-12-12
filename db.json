@@ -5,82 +5,24 @@
       "name": "städa"
     },
     {
-      "id": 26,
+      "id": "a41cec1f-7089-4d93-a64f-fc24414a3478",
       "name": "handla"
-    },
-    {
-      "id": "97edacc3-e34f-4abe-a537-1b7a4c980357",
-      "name": "ffee"
-    },
-    {
-      "id": "0b345a2e-41d4-46ee-b10c-bbe1e6daa30d",
-      "name": "fixa bil"
-    },
-    {
-      "id": "c94b95f5-6466-4ac1-9698-2f1ae1e196c3",
-      "name": "sadsad"
-    },
-    {
-      "id": "300e54ce-7b6b-4b04-bd1e-08189ffd5444",
-      "name": "fixa bil"
     }
   ],
   "tasks": [
     {
-      "id": 3,
-      "name": "dammsuga",
-      "projectId": "1",
-      "date": "12-12-22",
-      "timer": null
-    },
-    {
-      "id": "789",
-      "name": "diska",
-      "projectId": "1",
+      "id": "0e1af539-1e8e-4797-b281-6ac84cb1014b",
+      "name": "sdcd",
+      "projectName": "handla",
       "timer": null,
-      "date": "12-12-2022"
+      "date": "2022-12-22"
     },
     {
-      "id": "33",
-      "name": "moppa",
-      "projectId": "1",
-      "timer": null,
-      "date": "12-12-2022"
-    },
-    {
-      "id": "82a2230e-f15f-482c-aba9-0a215d714833",
-      "name": "diska",
-      "projectId": "1",
-      "timer": null,
-      "date": "12-12-2022"
-    },
-    {
-      "id": "dab8543b-7943-4ad8-a7c0-2710c05dea0f",
-      "name": "",
-      "projectId": "",
-      "timer": null,
-      "date": ""
-    },
-    {
-      "id": "bfb3ab41-746a-4b6e-8c10-3482e3764656",
-      "name": "cdcsd",
-      "projectId": "",
-      "timer": null,
-      "date": ""
-    },
-    {
-      "id": "83fe51ea-8e32-4a11-8873-3be58c039371",
-      "name": "eqdewd",
-      "projectId": "",
+      "id": "8b6e620e-0e31-46a7-9578-0fcaec2b70f8",
+      "name": "aaa",
+      "projectName": "städa",
       "timer": null,
       "date": "2022-12-28"
-    },
-    {
-      "id": "c5a61dd4-7c98-4df3-b986-cfcb2e4c1b5f",
-      "name": "dwcdw",
-      "projectId": "",
-      "timer": null,
-      "date": "2022-12-17"
     }
   ]
 }
