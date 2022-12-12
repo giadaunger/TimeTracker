@@ -6,7 +6,7 @@ import axios from 'axios';
 import 'react-tabs/style/react-tabs.css';
 import './css/dashboard.css'
 
-function Dashboard() {
+function Dashboard(project) {
 
 
   const [projects, setProjects] = useState([]);
@@ -41,6 +41,11 @@ function Dashboard() {
       <p>Projekt: {task.projectId}</p>
       <p>Time: {task.timer}</p>
     </div>
+
+    <div className="editDelete-div">
+      <button className="editDelete-btn">Delete</button>
+      <button className="editDelete-btn">Edit</button>
+    </div>
   </div>
   )
 
@@ -48,6 +53,11 @@ function Dashboard() {
   <div className="map-projects" key={project.id}>
     <div className="project-obj">
       <h2>{project.name}</h2>
+    </div>
+
+    <div className="editDelete-div">
+      <button className="editDelete-btn">Delete</button>
+      <button className="editDelete-btn">Edit</button>
     </div>
   </div>
   )

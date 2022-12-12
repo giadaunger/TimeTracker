@@ -26,3 +26,22 @@
     margin-bottom: 20px;
     display: flex;
 }
+
+.task-obj, .project-obj {
+    float:left; 
+    width: 50%;
+}
+
+.editDelete-div {
+    float:right; 
+    width:50%;
+}
+
+.editDelete-btn {
+    float: right;
+    background-color: #3973f0;
+    border: #3973f0;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+}

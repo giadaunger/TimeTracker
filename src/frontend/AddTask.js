@@ -9,15 +9,21 @@ function AddTask() {
   const [taskName, setTaskName] = useState('');
   const [projectId, setProjectId] = useState('');
   const [date, setDate] = useState('');
-  const [projects, setProjects] = useState([]);
 
-  const mapProjects = projects.map((project) => 
-  <div className="map-projects" key={project.id}>
-    <select id="projectId" name="projectId" form="projectId" value={projectId}>
-      <option value="project.id">{project.name}</option>
-    </select>
-  </div>
-  )
+  const handleTaskName = e => {
+    setTaskName(e.target.value);
+    console.log('value is:', e.target.value);
+  }
+
+  const handleTaskDate = e => {
+    setDate(e.target.value);
+    console.log('value is:', e.target.value);
+  }
+
+  const handleProjectId = e => {
+    setDate(e.target.value);
+    console.log('value is:', e.target.value);
+  }
 
   function submitTask() {
     const task = {
@@ -27,6 +33,9 @@ function AddTask() {
       timer : null,
       date : date
     }
+
+  setTaskName('');
+  setDate('');
 
     const headers = {"Content-Type" : "application/json"}
     axios.post("http://localhost:3001/tasks", task, {
@@ -41,14 +50,32 @@ function AddTask() {
         <h1 className="task-h1">Task</h1>
 
         <div className="add-task">
+
             <label className="project-label">Add task:</label><br />
-            <input className="project-input" type="text" /><br />
+            <input 
+              className="project-input" 
+              type="text" id="taskName" 
+              name="taskName" 
+              onChange={handleTaskName}
+              value={taskName} 
+              /><br />
 
-            <label className="project-label">Select project</label><br />
-            <div>{mapProjects}</div>
+            <label className="project-label">Project:</label><br />
+            <select 
+              form="select"
+              name="projectId"
+              onChange={handleProjectId}
+              value={projectId}>
+              </select><br />
 
-            <label>Date:</label><br />
-            <input type="date" id="date" name="date" value={date}/><br />
+            <label className="project-label">Date:</label><br />
+            <input 
+              type="date" 
+              name="date" 
+              placeholder="dd-mm-yyyy" 
+              onChange={handleTaskDate}
+              value={date}
+            /><br />
 
             <button onClick={submitTask}>Save</button>
         </div>

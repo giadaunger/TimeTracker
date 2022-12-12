@@ -19,6 +19,8 @@ function AddProject() {
       name: projectName,
     }
 
+    setProjectName('');
+
   const headers = {"Content-Type" : "application/json"}
   axios.post("http://localhost:3001/projects", project, {
     headers: {
