@@ -13,11 +13,7 @@ function Nav() {
                     <li className="nav-li">Calender</li>
                 </Link>
 
-                <Link to="/task" className="nav-link">
-                    <li className="nav-li">Task</li>
-                </Link>
-
-                <Link to="/timeTracker" className="nav-link">
+                <Link to="/timer" className="nav-link">
                    <li className="nav-li">Timer</li>
                 </Link>
 

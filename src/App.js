@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 
 import Calender from './frontend/Calender';
-import Task from './frontend/Task';
 import Timer from './frontend/Timer';
 import Dashboard from './frontend/Dashboard';
 import Nav from './frontend/Nav';
+import AddTask from './frontend/AddTask';
+import AddProject from './frontend/AddProject';
 
 function App() {
   return (
@@ -19,9 +20,10 @@ function App() {
 
       <Routes>
         <Route path="/calender" element={< Calender />} />
-        <Route path="/task" element={< Task />} />
-        <Route path="/timeTracker" element={< Timer />} />
+        <Route path="/timer" element={< Timer />} />
         <Route path="/" element={< Dashboard />}/>
+        <Route path="/addTask" element={< AddTask />} />
+        <Route path="/addProject" element={< AddProject />} />
       </Routes>
 
     </Router>

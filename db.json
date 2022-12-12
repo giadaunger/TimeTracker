@@ -1,0 +1,54 @@
+{
+  "projects": [
+    {
+      "id": "1",
+      "name": "städa"
+    },
+    {
+      "id": 26,
+      "name": "handla"
+    },
+    {
+      "id": "46",
+      "name": "lagat mat"
+    },
+    {
+      "id": "97edacc3-e34f-4abe-a537-1b7a4c980357",
+      "name": "ffee"
+    },
+    {
+      "id": "0b345a2e-41d4-46ee-b10c-bbe1e6daa30d",
+      "name": "fixa bil"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 3,
+      "name": "dammsuga",
+      "projectId": "1",
+      "date": "12-12-22",
+      "timer": null
+    },
+    {
+      "id": "789",
+      "name": "diska",
+      "projectId": "1",
+      "timer": null,
+      "date": "12-12-2022"
+    },
+    {
+      "id": "33",
+      "name": "moppa",
+      "projectId": "1",
+      "timer": null,
+      "date": "12-12-2022"
+    },
+    {
+      "id": "82a2230e-f15f-482c-aba9-0a215d714833",
+      "name": "diska",
+      "projectId": "1",
+      "timer": null,
+      "date": "12-12-2022"
+    }
+  ]
+}

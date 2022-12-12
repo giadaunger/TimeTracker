@@ -1,4 +1,4 @@
-.add-task{
+.add-task, .add-project{
     background-color: #333;
     padding: 20px;
     display: flex-inline;
@@ -9,8 +9,13 @@
     margin-right: auto;
 }
 
-.task-h1{
+.task-h1, .project-h1{
     text-align: center;
     margin-bottom: 20px;
     margin-top: 10px;
+}
+
+.task-input {
+    margin-top: 15px;
+    margin-right: 10px;
 }
