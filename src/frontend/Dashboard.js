@@ -6,8 +6,7 @@ import axios from 'axios';
 import 'react-tabs/style/react-tabs.css';
 import './css/dashboard.css'
 
-function Dashboard(project) {
-
+function Dashboard() {
 
   const [projects, setProjects] = useState([]);
   const [tasks, setTasks] = useState([]);
@@ -34,17 +33,27 @@ function Dashboard(project) {
     navigate("/addProject")
   }
 
+  function handleDeleteClick(id) {
+    // here we are filtering - the idea is remove an item from the todo array on a button click
+    const removeItem = tasks.filter((task) => {
+      // return the rest of the todos that don't match the item we are deleting
+      return task.id !== id;
+    });
+    // removeItem returns a new array - so now we are setting the todos to the new array
+    setTasks(removeItem);
+  }
+
   const mapTasks = tasks.map((task) => 
   <div className="map-tasks" key={task.id}>
     <div className="task-obj">
       <h2>{task.name}</h2>
       <p>Projekt: {task.projectName}</p>
       <p>Time: {task.timer}</p>
+      <p>Date: {task.date}</p>
     </div>
 
     <div className="editDelete-div">
-      <button className="editDelete-btn">Delete</button>
-      <button className="editDelete-btn">Edit</button>
+      <button className="editDelete-btn" onClick={handleDeleteClick}>Delete</button>
     </div>
   </div>
   )
@@ -57,7 +66,6 @@ function Dashboard(project) {
 
     <div className="editDelete-div">
       <button className="editDelete-btn">Delete</button>
-      <button className="editDelete-btn">Edit</button>
     </div>
   </div>
   )

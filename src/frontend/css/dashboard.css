@@ -29,12 +29,12 @@
 
 .task-obj, .project-obj {
     float:left; 
-    width: 50%;
+    width: 60%;
 }
 
 .editDelete-div {
     float:right; 
-    width:50%;
+    width:40%;
 }
 
 .editDelete-btn {
