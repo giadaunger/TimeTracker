@@ -11,20 +11,6 @@
   ],
   "tasks": [
     {
-      "id": "479d6f22-6c93-4403-872a-d7f95a4d9313",
-      "name": "moppa",
-      "projectName": "städa",
-      "timer": null,
-      "date": "2022-12-16"
-    },
-    {
-      "id": "5fd3de7e-66fa-4ad0-84db-3f5b59d4c2f6",
-      "name": "damsuga",
-      "projectName": "städa",
-      "timer": null,
-      "date": "2022-11-30"
-    },
-    {
       "id": "bdaedfdf-09f4-4663-a53e-c081c520e3d1",
       "name": "damma",
       "projectName": "städa",
@@ -37,6 +23,13 @@
       "projectName": "städa",
       "timer": null,
       "date": "2022-12-14"
+    },
+    {
+      "id": "89dea7ea-be0b-45eb-8ea9-abab501f3577",
+      "name": "moppa",
+      "projectName": "städa",
+      "timer": null,
+      "date": "2023-01-27"
     }
   ]
 }

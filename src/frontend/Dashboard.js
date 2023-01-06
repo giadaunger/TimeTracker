@@ -24,6 +24,10 @@ function Dashboard() {
   function getTasks () {
     axios.get("http://localhost:3001/tasks").then(res => setTasks(res.data)).catch(error => console.warn(error));
   }
+
+  function deleteTask (id) {
+    axios.delete(`http://localhost:3001/tasks/${id}`).then(res => console.log(res.data)).catch(error => console.warn(error));
+  }
   
   function createNewTask() {
     navigate("/addTask")
@@ -41,6 +45,8 @@ function Dashboard() {
     });
     // removeItem returns a new array - so now we are setting the todos to the new array
     setTasks(removeItem);
+    deleteTask(id);
+    console.log(id);
   }
 
   const mapTasks = tasks.map((task) => 
@@ -53,7 +59,7 @@ function Dashboard() {
     </div>
 
     <div className="editDelete-div">
-      <button className="editDelete-btn" onClick={handleDeleteClick}>Delete</button>
+      <button className="editDelete-btn" onClick={() => handleDeleteClick(task.id)}>Delete</button>
     </div>
   </div>
   )
@@ -65,7 +71,7 @@ function Dashboard() {
     </div>
 
     <div className="editDelete-div">
-      <button className="editDelete-btn">Delete</button>
+      <button className="editDelete-btn" >Delete</button>
     </div>
   </div>
   )
