@@ -1,5 +1,5 @@
+import axios from 'axios';
 const React = require('react')
-const mapDate = require('./Timer')
 
 class SingleTask extends React.Component {
   constructor(props){
@@ -12,6 +12,18 @@ class SingleTask extends React.Component {
     this.startTimer = this.startTimer.bind(this)
     this.stopTimer = this.stopTimer.bind(this)
     this.resetTimer = this.resetTimer.bind(this)
+  }
+
+   submitTime() {
+    const time = {
+      timer : this.state.time,
+    }
+
+    const headers = {"Content-Type" : "application/json"}
+    axios.post("http://localhost:3002/saveTime", time, {
+      headers: {
+      'content-type': 'application/json'
+      }})
   }
 
   startTimer() {
@@ -27,9 +39,10 @@ class SingleTask extends React.Component {
   }
 
   stopTimer() {
+    this.submitTime()
     this.setState({isOn: false})
     clearInterval(this.timer)
-    console.log("stop")
+    console.log(this.state.time)
   }
   
   resetTimer() {
