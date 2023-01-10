@@ -54,7 +54,6 @@ function Dashboard() {
     <div className="task-obj">
       <h2>{task.name}</h2>
       <p>Projekt: {task.projectName}</p>
-      <p>Time: {task.timer}</p>
       <p>Date: {task.date}</p>
     </div>
 

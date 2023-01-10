@@ -21,7 +21,11 @@
       "id": "2f72bade-cf2c-4f79-9acd-762e199c1efe",
       "name": "diska",
       "projectName": "städa",
-      "timer": null,
+      "timer": {
+        "hours": 0,
+        "minutes": 0,
+        "seconds": 4
+      },
       "date": "2022-12-14"
     },
     {

@@ -17,19 +17,14 @@ function Timer() {
 
   const sortDate = tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
   const mapDate = sortDate.map((task) => 
-    <ul key={task.id}>
-      <li>{task.date}</li>
-      <li>{task.name}</li>
-    </ul>
+    <SingleTask task={task}/>
   );
-
-  const mapTasks = tasks.map((task) => <SingleTask task={task} mapDate={mapDate}/>)
 
   return (
 
     <div>
       <h1 className="timer-h1">Timer</h1>
-      <div>{mapTasks}</div>
+      <div>{mapDate}</div>
     </div>
   );
 }

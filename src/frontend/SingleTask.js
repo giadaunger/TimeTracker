@@ -1,78 +1,89 @@
+import React from "react";
+import { useStopwatch } from 'react-timer-hook';
 import axios from 'axios';
-const React = require('react')
 
-class SingleTask extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      time: 0,
-      start: 0,
-      isOn: false
+
+function SingleTask ({task}) {
+
+    let date = new Date();
+    date.setMinutes(16);
+    date.setHours(3);
+
+    function setTimerInSeconds() {
+      let startingTime = 0;
+      if(task.timer) {
+        startingTime = task.timer.seconds;
+        if(task.timer.minutes > 0) {
+          startingTime += task.timer.minutes * 60;
+        }
+        if(task.timer.hours > 0) {
+          startingTime += task.timer.hours * 60 * 60;
+        }
+        console.log(startingTime)
+      }
+      return startingTime;
     }
-    this.startTimer = this.startTimer.bind(this)
-    this.stopTimer = this.stopTimer.bind(this)
-    this.resetTimer = this.resetTimer.bind(this)
-  }
 
-   submitTime() {
-    const time = {
-      timer : this.state.time,
-    }
+    let offsetTimer = new Date();
+    offsetTimer.setSeconds(offsetTimer.getSeconds() + setTimerInSeconds());
 
-    const headers = {"Content-Type" : "application/json"}
-    axios.post("http://localhost:3002/saveTime", time, {
-      headers: {
-      'content-type': 'application/json'
+    const {
+        seconds,
+        minutes,
+        hours,
+        isRunning,
+        start,
+        pause,
+        reset,
+      } = useStopwatch({ autoStart: false, offsetTimestamp : offsetTimer });
+
+
+      function saveTime () {
+        pause()
+        const newTime = {hours, minutes, seconds}
+        task.timer = newTime;
+        console.log(task)
+
+        const headers = {"Content-Type" : "application/json"}
+        axios.put(`http://localhost:3001/tasks/${task.id}`, task, {
+        headers: {
+        'content-type': 'application/json'
       }})
   }
 
-  startTimer() {
-    this.setState({
-      time: this.state.time,
-      start: Date.now() - this.state.time,
-      isOn: true
-    })
-    this.timer = setInterval(() => this.setState({
-      time: Date.now() - this.state.start
-    }), 1)
-    console.log("start")
+  function resetTime () {
+    reset()
+    pause()
+    task.timer = null;
+
+    const headers = {"Content-Type" : "application/json"}
+        axios.put(`http://localhost:3001/tasks/${task.id}`, task, {
+        headers: {
+        'content-type': 'application/json'
+      }})
   }
 
-  stopTimer() {
-    this.submitTime()
-    this.setState({isOn: false})
-    clearInterval(this.timer)
-    console.log(this.state.time)
-  }
-  
-  resetTimer() {
-    this.setState({time: 0})
-    console.log("reset")
-  }
+    return(
+        <div className="map-tasks" key={task.id}>
+    <div className="timer-obj">
+      <h2>{task.name}</h2>
+    </div>
 
-  render() {
+    <div className="timer-container">
+      <div className="time-div">
+        <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
+      </div >
+      <p className="timer-p">{isRunning ? 'Running' : 'Not running'}</p>
+    </div>
 
-    let start = (this.state.time === 0) ?
-      <button onClick={this.startTimer}>start</button> : null
+    <div className="timer-btn-div">
+      <button className="timer-btn" onClick={start}>Start</button>
+      <button className="timer-btn" onClick={saveTime}>Pause</button>
+      <button className="timer-btn" onClick={resetTime}>Reset</button>
+    </div>
 
-    let stop = (this.state.isOn) ?
-      <button onClick={this.stopTimer}>stop</button> : null
-
-    let reset = (this.state.time !== 0 && !this.state.isOn) ?
-      <button onClick={this.resetTimer}>reset</button> : null
-
-    let resume = (this.state.time !== 0 && !this.state.isOn) ?
-      <button onClick={this.startTimer}>resume</button> : null
-
-     return (
-       <div>
-         <h3>timer: {this.state.time}</h3>
-         {start}
-         {resume}
-         {stop}
-         {reset}
-       </div>
-     );
-  }
+    </div>
+    )
 }
+
 export default SingleTask;

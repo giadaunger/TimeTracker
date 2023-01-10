@@ -11,6 +11,7 @@ import AddTask from './frontend/AddTask';
 import AddProject from './frontend/AddProject';
 
 function App() {
+
   return (
     <Router>
       
@@ -18,14 +19,13 @@ function App() {
         <Nav />
       </div>
 
-      <Routes>
-        <Route path="/calender" element={< Calender />} />
-        <Route path="/timer" element={< Timer />} />
-        <Route path="/" element={< Dashboard />}/>
-        <Route path="/addTask" element={< AddTask />} />
-        <Route path="/addProject" element={< AddProject />} />
-      </Routes>
-
+        <Routes>
+          <Route path="/calender" element={< Calender />} />
+          <Route path="/timer" element={< Timer />} />
+          <Route path="/" element={< Dashboard />}/>
+          <Route path="/addTask" element={< AddTask />} />
+          <Route path="/addProject" element={< AddProject />} />
+        </Routes>
     </Router>
   );
 }
